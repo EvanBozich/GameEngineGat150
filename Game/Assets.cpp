@@ -36,10 +36,12 @@ namespace Assets
 
 
 	//nu::Mesh playerMesh { mesh2, mesh4 };
-	nu::Model playerModel = std::vector<nu::Mesh>{ mesh2, mesh4 };
-	nu::Model enemyModel = std::vector<nu::Mesh>{ mesh1 };
-	nu::Model bulletModel = std::vector<nu::Mesh>{ bulletMesh };
-	nu::Model asteriodModel = std::vector<nu::Mesh>{ asteriodMesh };
+	std::shared_ptr<nu::Model> playerModel = std::make_shared<nu::Model>(std::vector<nu::Mesh>{ mesh2, mesh4 });
+	std::shared_ptr<nu::Model> enemyModel = std::make_shared<nu::Model>(std::vector<nu::Mesh>{ mesh1 });
+	std::shared_ptr<nu::Model> bulletModel = std::make_shared<nu::Model>(std::vector<nu::Mesh>{ bulletMesh });
+	std::shared_ptr<nu::Model> asteriodModel = std::make_shared<nu::Model>(std::vector<nu::Mesh>{ asteriodMesh });
+
+
 
 
 

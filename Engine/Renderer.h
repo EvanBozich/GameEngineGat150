@@ -1,6 +1,8 @@
 #pragma once
 #include "SDL3/SDL.h"
 #include "SDL3_ttf/SDL_ttf.h"
+#include <SDL3_image/SDL_image.h>
+#include "Texture.h"
 #include "Model.h"
 #include "Transform.h"
 
@@ -28,6 +30,8 @@ namespace nu
 		void DrawModel(const Model& model, const Transform& transform) const;
 
 		friend class Text;
+		friend class Texture;
+		void DrawTexture(class Texture* texture, float x, float y);
 
 	private :
 		SDL_Window* m_window = nullptr;

@@ -43,7 +43,7 @@ namespace nu
 		uint32_t m_buttonStates = 0;
 		uint32_t m_prevButtonStates = 0;
 
-		Vector2 m_mousePosition;
+		Vector2 m_mousePosition{ 0.0f, 0.0f };
 		
 
 	};
