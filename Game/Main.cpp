@@ -27,57 +27,6 @@ private:
 int main()
 {
 
-    std::cout << "============================Object===================================" << std::endl;
-    {
-        Object objectA;
-        Object objectB = objectA;
-        Object objectC;
-        objectC = objectA;
-
-
-
-    }
-    std::cout << "================Raw Pointer============================" << std::endl;
-    {
-        Object* objectA = new Object();
-        std::cout << objectA << std::endl;
-        Object* objectB = new Object(*objectA);
-        std::cout << objectB << std::endl;
-        Object* objectC = nullptr;
-        objectC = objectA;
-        std::cout << objectC << std::endl;
-
-        delete objectA;
-        delete objectB;
-        //delete objectC;
-    }
-    std::cout << "================Unique Pointer============================" << std::endl;
-    {
-        std::unique_ptr<Object> objectA = std::make_unique<Object>();
-        std::cout << objectA.get() << std::endl;
-        std::unique_ptr<Object> objectB;
-        objectB = std::move(objectA);
-        std::cout << objectB.get() << std::endl;
-
-        objectB.reset();
-    }
-
-
-    std::cout << "===================Shared Pointers=======================" << std::endl;
-    std::shared_ptr<Object> objectC;
-    {
-        auto objectA = std::make_shared<Object>();
-        std::cout << objectA.get() << std::endl;
-        std::cout << objectA.use_count() << std::endl;
-        auto objectB = objectA;
-        std::cout << objectB.get() << std::endl;
-        std::cout << objectB.use_count() << std::endl;
-        objectC = objectA;
-        std::cout << objectC.get() << std::endl;
-        std::cout << objectC.use_count() << std::endl;
-    }
-
-    std::cout << objectC.use_count() << std::endl;
 
 
 
@@ -96,8 +45,8 @@ int main()
     bool quit = false;
 
     // create texture, using shared_ptr so texture can be shared
-    std::shared_ptr<Texture> texture = std::make_shared<Texture>();
-    texture->Load("textures/test.png",Engine::Get().GetRenderer());
+   // std::shared_ptr<Texture> texture = std::make_shared<Texture>();
+    //texture->Load("textures/player.png",Engine::Get().GetRenderer());
 
     //main loop
     while (!quit) 
@@ -126,7 +75,7 @@ int main()
 
         game.Draw(nu::Engine::Get().GetRenderer());
 
-        Engine::Get().GetRenderer().DrawTexture(texture.get(), 30, 30);
+        Engine::Get().GetRenderer().DrawTexture(*Resources().Get<Texture>("textures/player.png", Engine::Get().GetRenderer()), 30, 30);
 
         Engine::Get().GetPS().Draw(Engine::Get().GetRenderer());
 

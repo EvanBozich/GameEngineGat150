@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "Assets.h"
+#include <memory>
 
 using namespace nu;
 
@@ -14,25 +15,17 @@ bool SpaceGame::Initialize()
 
 	nu::Engine::Get().GetAudio().AddSound("alert", "alert.mp3");
 	nu::Engine::Get().GetAudio().AddSound("scream", "scream.mp3");
-
-	m_titleFont = new Font();
-	m_titleFont->Load("Fonts/ArcadeClassic.ttf", 64);
 	
-	m_titleText = new Text(m_titleFont);
+	m_titleText = new Text(Resources().Get<nu::Font>("Fonts/ArcadeClassic.ttf", 64.0f));
 	m_titleText->Create(Engine::Get().GetRenderer(), "Asteriods Cpp edition", Color{ 1.0f, 1.0f, 1.0f });
 
-	m_gameOverFont = new Font();
-	m_gameOverFont->Load("Fonts/ArcadeClassic.ttf", 64);
 
-	m_gameOverText = new Text(m_gameOverFont);
+	m_gameOverText = new Text(Resources().Get<nu::Font>("Fonts/ArcadeClassic.ttf", 64.0f));
 	m_gameOverText->Create(Engine::Get().GetRenderer(), "GAME OVER", Color{ 1.0f, 0.0f, 0.0f });
 
-	m_gameFont = new Font();
-	m_gameFont->Load("Fonts/ArcadeClassic.ttf", 20);
-
-	m_scoreText = new Text(m_gameFont);
-	m_livesText = new Text(m_gameFont);
-	m_healthText = new Text(m_gameFont);
+	m_scoreText = new Text(Resources().Get<nu::Font>("Fonts/ArcadeClassic.ttf", 20.0f));
+	m_livesText = new Text(Resources().Get<nu::Font>("Fonts/ArcadeClassic.ttf", 20.0f));
+	m_healthText = new Text(Resources().Get<nu::Font>("Fonts/ArcadeClassic.ttf", 20.0f));
 
 
 	return true;
@@ -108,7 +101,7 @@ void SpaceGame::Draw(nu::Renderer& renderer)
 		//draw score/lives
 		m_scoreText->Create(renderer, "Score: " + std::to_string(m_score), { 1.0f,1.0f,1.0f });
 		m_livesText->Create(renderer, "Lives: " + std::to_string(m_lives), { 1.0f,1.0f,1.0f });
-		m_healthText->Create(renderer, "Healt " + std::to_string(m_health), { 1.0f, 1.0f, 1.0f });
+		m_healthText->Create(renderer, "Health " + std::to_string(m_health), { 1.0f, 1.0f, 1.0f });
 		m_scoreText->Draw(renderer, 32, 32);
 		m_livesText->Draw(renderer, 1020, 32);
 		m_healthText->Draw(renderer, 640, 32);
