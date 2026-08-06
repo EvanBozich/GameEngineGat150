@@ -57,7 +57,6 @@ void SpaceGame::Update(float dt)
 		m_gameState = GameState::Game;
 		break;
 	case GameState::Game:
-		nu::Engine::Get().GetAudio().PlaySound("main");
 		m_spawntimer -= dt;
 
 		if (m_spawntimer <= 0)
@@ -86,7 +85,8 @@ void SpaceGame::Update(float dt)
 
 void SpaceGame::Draw(nu::Renderer& renderer)
 {
-	Game::Draw(renderer);
+	//use to draw background later
+	//renderer.DrawTexture()
 
 	switch (m_gameState)
 	{
@@ -112,6 +112,8 @@ void SpaceGame::Draw(nu::Renderer& renderer)
 	default:
 		break;
 	}
+
+	Game::Draw(renderer);
 }
 
 void SpaceGame::OnPlayerDead()
@@ -136,8 +138,9 @@ void SpaceGame::SpawnEnemy()
 	EnemyDesc enemyDesc;
 	enemyDesc.name = "Enemy";
 	enemyDesc.tag = "Enemy";
-	enemyDesc.model = Assets::enemyModel;
-	enemyDesc.transform =  nu::Transform{ nu::Vector2{nu::Randomfloat(1280), nu::Randomfloat(1024)}, 90.0f, 10.0f};
+	//enemyDesc.model = Assets::enemyModel;
+	enemyDesc.texture = Resources().Get<Texture>("textures/enemy.png", Engine::Get().GetRenderer());
+	enemyDesc.transform =  nu::Transform{ nu::Vector2{nu::Randomfloat(1280), nu::Randomfloat(1024)}, 90.0f, 1.0f};
 	enemyDesc.speed = 450.0f;
 	enemyDesc.damping = 1.0f;
 	m_scene->AddActor(std::move(std::make_unique<Enemy>(enemyDesc)));
@@ -159,8 +162,9 @@ void SpaceGame::SpawnPlayer()
 {
 	PlayerDesc playerDesc;
 	playerDesc.name = "Player";
-	playerDesc.model = Assets::playerModel;
-	playerDesc.transform = nu::Transform{ nu::Vector2{640.0f, 512.0f}, 0.0f, 15.0f };
+	//playerDesc.model = Assets::playerModel;
+	playerDesc.texture = Resources().Get<Texture>("textures/player.png", Engine::Get().GetRenderer());
+	playerDesc.transform = nu::Transform{ nu::Vector2{640.0f, 512.0f}, 0.0f, 1.0f };
 	playerDesc.speed = 800.0f;
 	playerDesc.damping = 1.0f;
 	std::unique_ptr<Player> player = std::make_unique<Player>(playerDesc);

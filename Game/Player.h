@@ -3,7 +3,7 @@
 
 struct PlayerDesc : public nu::ActorDesc
 {
-	float speed;
+	float speed{ 0.0f };
 };
 
 class Player : public nu::Actor
