@@ -1,5 +1,4 @@
 // Game.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
 #include "Engine.h"
 #include "Player.h"
 #include "Enemy.h"
@@ -8,29 +7,74 @@
 #include "Assets.h"
 #include "SpaceGame.h"
 #include <memory>
+#include <random>
 using namespace nu;
 
-class Object
+
+uint32_t seed = 1243;
+
+
+uint32_t rng()
 {
-public:
-    Object() { std::cout << "Constructor\n"; }
-    ~Object() { std:: cout << "Destructor\n"; }
+    seed = (seed * 1103515245) + 12345;
 
-    Object(const Object& object) { std::cout << "Copy constructor\n"; }
-
-    Object& operator =(const Object& object) { std::cout << "assignment\n"; return *this; }
-
-private:
-};
+    return seed;
+}
 
 
 int main()
 {
+    //rand()
+    for (size_t i = 0; i < 10; i++)
+    {
+        std::cout << rng() << " ";
+    }
 
+    std::cout << std::endl;
 
+    seed = 1234;
+    for (size_t i = 0; i < 10; i++)
+    {
+        std::cout << rng() << " ";
+    }
 
+    std::cout << std::endl;
 
+    srand((unsigned int)time(NULL));
+    for (size_t i = 0; i < 10; i++)
+    {
+        std::cout << rand() << " ";
+    }
 
+    std::cout << std::endl;
+    //random
+    std::random_device randomDevice;
+
+    std::cout << randomDevice.min() << std::endl;
+    std::cout << randomDevice.max() << std::endl;
+    std::cout << randomDevice.entropy() << std::endl;
+
+    std::mt19937 generator(randomDevice());
+
+    std::uniform_int_distribution<> dist(0, 20);
+
+    for (size_t i = 0; i < 10; i++)
+    {
+        std::cout << dist(generator) << " ";
+    }
+
+    std::cout << std::endl;
+
+    std::uniform_real_distribution<float> distReal(-10, 40);
+
+    for (size_t i = 0; i < 10; i++)
+    {
+        std::cout << distReal(generator) << " ";
+    }
+
+    std::cout << std::endl;
+
+    return 0;
 
     nu::SetWorkingDirectory("assets");
     //Initialize
