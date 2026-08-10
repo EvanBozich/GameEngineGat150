@@ -8,6 +8,7 @@
 #include "SpaceGame.h"
 #include <memory>
 #include <random>
+#include <fstream>
 using namespace nu;
 
 
@@ -16,6 +17,95 @@ int main()
 
     nu::SetWorkingDirectory("assets");
     //Initialize
+
+    {
+        //read file (input)
+        std::ifstream file("data/test.txt");
+        if (file.is_open())
+        {
+            std::string str;
+            while (std::getline(file, str))
+            {
+                std::cout << str << std::endl;
+            }
+        }
+        else
+        {
+            std::cout << "Can't load the file homie" << std::endl;
+        }
+
+        //does automatically if out of scope
+        file.close();
+    }
+
+    {
+        //write to file (output)
+        std::ofstream file("data/test.txt", std::ios::app);
+        if (file.is_open())
+        {
+            file << "Have a good day.\n";
+        }
+    }
+
+    {
+        //read/write (input/output)
+        std::fstream file("data/test.txt", std::ios::in | std::ios::out | std::ios::app);
+        if (file.is_open())
+        {
+            file << "add a line\n";
+            file.seekg(0);
+            std::string str;
+            while (std::getline(file, str))
+            {
+                std::cout << str << std::endl;
+            }
+        }
+    }
+
+    {
+        std::string name;
+        int score;
+        bool isAlive;
+
+        //save game data
+        bool save = false;
+
+        if (save)
+        {
+            name = "Evan";
+            score = 1234;
+            isAlive = true;
+
+            //save game data
+            std::ofstream file("data/game.txt");
+            if (file.is_open())
+            {
+                file << name << "\n";
+                file << score << "\n";
+                file << isAlive << "\n";
+            }
+        }
+
+        //load game data
+        bool load = true;
+
+        if (load)
+        {
+            std::ifstream file("data/game.txt");
+            if (file.is_open())
+            {
+                std::getline(file, name);
+                file >> score;
+                file >> isAlive;
+            }
+        }
+
+        std::cout << name << std::endl;
+        std::cout << score << std::endl;
+        std::cout << isAlive << std::endl;
+    }
+
+    return 0;
    
     Engine::Get().Initialize();
 

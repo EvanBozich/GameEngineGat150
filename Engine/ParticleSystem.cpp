@@ -54,7 +54,7 @@ namespace nu {
 				// TODO: draw point with particle position
 				//renderer.SetColorFloat(particle.color.r, particle.color.g, particle.color.b);
 				//renderer.DrawPoint(particle.position.x, particle.position.y);
-				renderer.DrawTexture(*particle.texture, particle.position.x, particle.position.y);
+				renderer.DrawTexture(*particle.texture, particle.position.x, particle.position.y, particle.position.Angle());
 			}
 		}
 	}
