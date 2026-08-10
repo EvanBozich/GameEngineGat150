@@ -85,8 +85,10 @@ void SpaceGame::Update(float dt)
 
 void SpaceGame::Draw(nu::Renderer& renderer)
 {
+	res_t<Texture> background = Resources().Get<Texture>("textures/background.jpg", Engine::Get().GetRenderer());
+
 	//use to draw background later
-	//renderer.DrawTexture()
+	renderer.DrawTexture(*background, 0.0f, 0.0f, 0.0f, 2.0f);
 
 	switch (m_gameState)
 	{
@@ -151,8 +153,9 @@ void SpaceGame::SpawnAsteriods()
 	EnemyDesc asteriod;
 	asteriod.name = "Asteriod";
 	asteriod.tag = "Enemy";
-	asteriod.model = Assets::asteriodModel;
-	asteriod.transform = nu::Transform{ nu::Vector2{nu::Randomfloat(1280), nu::Randomfloat(1024)}, 90.0f, 10.0f };
+	//asteriod.model = Assets::asteriodModel;
+	asteriod.texture = Resources().Get<Texture>("textures/asteroid.png", Engine::Get().GetRenderer());
+	asteriod.transform = nu::Transform{ nu::Vector2{nu::Randomfloat(1280), nu::Randomfloat(1024)}, 90.0f, nu::Randomfloat(1.0f, 5.0f)};
 	asteriod.speed = 100.0f;
 	asteriod.damping = 1.0f;
 	m_scene->AddActor(std::move(std::make_unique<Enemy>(asteriod)));

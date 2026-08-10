@@ -27,18 +27,19 @@ void Player::Update(float dt)
     nu::Particle particle;
     particle.position = m_transform.position;
     particle.color = { 1.0f, 1.0f, 1.0f };
+    particle.texture = nu::Resources().Get<nu::Texture>("textures/thrust.png", nu::Engine::Get().GetRenderer());
     particle.lifespan = nu::Randomfloat(0.5f, 1.5f);
     particle.velocity = { nu::Randomfloat(-200.0f, 200.0f), nu::Randomfloat(-200.0f, 200.0f) };
 
     nu::Engine::Get().GetPS().AddParticle(particle);
-
 
     if (nu::Engine::Get().GetInput().GetKeyDown(SDL_SCANCODE_SPACE))
     {
         BulletDesc desc;
         desc.name = "Bullet";
         desc.tag = "Bullet";
-        desc.model = Assets::bulletModel;
+        //desc.model = Assets::bulletModel;
+        desc.texture = nu::Resources().Get<nu::Texture>("textures/missle.png", nu::Engine::Get().GetRenderer());
         desc.transform = m_transform;
         desc.speed = 800.0f;
         desc.damping = 1.0f;
@@ -50,7 +51,7 @@ void Player::Update(float dt)
 
     if (nu::Engine::Get().GetInput().GetKeyPressed(SDL_SCANCODE_E))
     {
-        this->m_transform = nu::Transform{ nu::Vector2{nu::Randomfloat(1280), nu::Randomfloat(1024)}, 0.0f, 15.0f };
+        this->m_transform = nu::Transform{ nu::Vector2{nu::Randomfloat(1280), nu::Randomfloat(1024)}, 0.0f, 1.0f };
     }
 
 

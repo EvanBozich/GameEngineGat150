@@ -57,7 +57,7 @@ int main()
 
         game.Draw(nu::Engine::Get().GetRenderer());
 
-        Engine::Get().GetRenderer().DrawTexture(*Resources().Get<Texture>("textures/player.png", Engine::Get().GetRenderer()), 30, 30);
+        //Engine::Get().GetRenderer().DrawTexture(*Resources().Get<Texture>("textures/player.png", Engine::Get().GetRenderer()), 30, 30);
 
         Engine::Get().GetPS().Draw(Engine::Get().GetRenderer());
 

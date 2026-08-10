@@ -47,13 +47,14 @@ namespace nu {
 		// draw all active particlee
 		for (auto& particle : m_particles)
 		{
-			if (particle.active)
+			if (particle.active && particle.texture)
 			{
 				// set particle color and draw point at current position
 				// TODO: set color with particle color
 				// TODO: draw point with particle position
-				renderer.SetColorFloat(particle.color.r, particle.color.g, particle.color.b);
-				renderer.DrawPoint(particle.position.x, particle.position.y);
+				//renderer.SetColorFloat(particle.color.r, particle.color.g, particle.color.b);
+				//renderer.DrawPoint(particle.position.x, particle.position.y);
+				renderer.DrawTexture(*particle.texture, particle.position.x, particle.position.y);
 			}
 		}
 	}
