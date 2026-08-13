@@ -20,6 +20,10 @@ public:
 	void Update(float dt) override;
 
 	//void Draw(const class nu::Renderer& renderer) const override;
+	virtual void Read(const nu::json::value_t& value) override;
+
+	CLASS_PROTOTYPE(Bullet)
+
 
 private:
 	int m_ammo = 0;

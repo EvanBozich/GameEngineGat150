@@ -3,6 +3,7 @@
 #include "Texture.h"
 #include "Renderer.h"
 #include "MathUtil.h"
+#include "Engine.h"
 
 namespace nu {
 
@@ -56,6 +57,14 @@ namespace nu {
         if (JSON_HAS_NAME(value, "transform"))
         {
             m_transform.Read(JSON_GET_NAME(value,"transform"));
+        }
+
+        std::string textureName;
+        JSON_READ_NAME(value, "texture", textureName);
+
+        if (!textureName.empty())
+        {
+            m_texture = Resources().Get<Texture>(textureName, Engine::Get().GetRenderer());
         }
 
         JSON_READ_NAME(value, "tag", m_tag);

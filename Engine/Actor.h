@@ -37,6 +37,9 @@ namespace nu {
             m_texture {actorDesc.texture}
         { }
 
+        CLASS_PROTOTYPE(Actor)
+
+
         virtual void Update(float dt);
 
         virtual void Draw(const class Renderer& renderer) const;
@@ -63,6 +66,8 @@ namespace nu {
         bool GetDestroyed() const { return m_destroyed; }
 
         virtual void Read(const json::value_t& value) override;
+
+
 
         friend Scene;
 

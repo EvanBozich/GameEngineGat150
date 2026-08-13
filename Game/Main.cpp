@@ -4,6 +4,7 @@
 #include "Assets.h"
 #include "SpaceGame.h"
 #include "Engine.h"
+#include "Bullet.h"
 #include <memory>
 #include <random>
 #include <fstream>
@@ -13,11 +14,14 @@ using namespace nu;
 int main()
 {
     nu::SetWorkingDirectory("assets");
-
+    
     Factory::Instance().Register<Actor>("Actor");
     Factory::Instance().Register<Object>("Object");
     Factory::Instance().Register<Player>("Player");
-
+    Factory::Instance().Register<Enemy>("Enemy");
+    Factory::Instance().Register<Bullet>("Bullet");
+    Factory::Instance().Register<Enemy>("Asteriod");
+    /*
     auto actor = Factory::Instance().Create<Actor>("Actor");
     std::cout << actor->IsActive() << std::endl;
 
@@ -38,6 +42,7 @@ int main()
     }
 
     return 0;
+    */
 
     //Initialize
    
@@ -49,10 +54,6 @@ int main()
  
     SDL_Event e;
     bool quit = false;
-
-    // create texture, using shared_ptr so texture can be shared
-   // std::shared_ptr<Texture> texture = std::make_shared<Texture>();
-    //texture->Load("textures/player.png",Engine::Get().GetRenderer());
 
     //main loop
     while (!quit) 
@@ -81,10 +82,7 @@ int main()
 
         game.Draw(nu::Engine::Get().GetRenderer());
 
-        //Engine::Get().GetRenderer().DrawTexture(*Resources().Get<Texture>("textures/player.png", Engine::Get().GetRenderer()), 30, 30);
-
         Engine::Get().GetPS().Draw(Engine::Get().GetRenderer());
-
 
         nu::Engine::Get().GetRenderer().Present();
     }

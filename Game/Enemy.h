@@ -18,6 +18,11 @@ class Enemy : public nu::Actor
 
 		void OnCollision(Actor* other) override;
 
+		virtual void Read(const nu::json::value_t& value) override;
+
+		CLASS_PROTOTYPE(Enemy)
+
+
 	private:
 		int m_ammo = 0;
 		float m_speed = 800.0f;

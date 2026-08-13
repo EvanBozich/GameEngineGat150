@@ -1,12 +1,64 @@
 {
-  "name": "Evan",
-  "tag": "Student",
-  "active": true,
-  "speed": 800,
-  "transform": {
-    "position": [ 2.4, 5.6 ],
-    "rotation": 45,
-    "scale": 2
-  }
-
+  "actors": [
+    {
+      "name": "PlayerPrototype",
+      "type": "Player",
+      "prototype": true,
+      "tag": "Player",
+      "active": true,
+      "damping": 1,
+      "speed": 800,
+      "texture": "textures/player.png",
+      "transform": {
+        "position": [ 640, 512 ],
+        "rotation": 0,
+        "scale": 1
+      }
+    },
+    {
+      "name": "EnemyPrototype",
+      "type": "Enemy",
+      "prototype": true,
+      "tag": "Enemy",
+      "active": true,
+      "damping": 1,
+      "speed": 800,
+      "texture": "textures/enemy.png",
+      "transform": {
+        "position": [ 640, 512 ],
+        "rotation": 0,
+        "scale": 1
+      }
+    },
+    {
+      "name": "BulletPrototype",
+      "type": "Bullet",
+      "prototype": true,
+      "tag": "Bullet",
+      "active": true,
+      "damping": 1,
+      "speed": 800,
+      "texture": "textures/missle.png",
+      "transform": {
+        "position": [ 640, 512 ],
+        "rotation": 0,
+        "scale": 1
+      }
+    },
+    {
+      "name": "AsteroidPrototype",
+      "type": "Enemy",
+      "prototype": true,
+      "tag": "Enemy",
+      "active": true,
+      "damping": 1,
+      "speed": 800,
+      "texture": "textures/asteroid.png",
+      "transform": {
+        "position": [ 640, 512 ],
+        "rotation": 0,
+        "scale": 1
+      }
+    }
+  ]
 }

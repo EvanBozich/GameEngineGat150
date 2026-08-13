@@ -33,7 +33,7 @@ private:
 	void SpawnAsteriods();
 	int m_score = 0;
 	int m_lives = 0;
-	int m_health = 0;
+	int m_health = 100;
 	float m_spawntimer = 0;
 	float m_stateTimer = 0;
 
