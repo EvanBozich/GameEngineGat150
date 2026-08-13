@@ -84,11 +84,11 @@ namespace nu::json
     {
         // check if the value has the "<name>" and the correct data type
         if (!value.HasMember(name.c_str()) || !value[name.c_str()].IsNumber())
-        
+        {
             if (required)
                 std::cerr << "Could not read JSON value (float): " << name << std::endl;
             return false;
-
+        }
         // get the data
         data = value[name.c_str()].GetFloat();
 
