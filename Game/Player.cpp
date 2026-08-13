@@ -63,6 +63,13 @@ void Player::Draw(const nu::Renderer& renderer) const
 	Actor::Draw(renderer);
 }
 
+void Player::Read(const nu::json::value_t& value)
+{
+    Actor::Read(value);
+
+    JSON_READ_NAME(value, "speed", m_speed);
+}
+
 void Player::OnCollision(Actor* other)
 {
     if (other->GetTag() == "Enemy")

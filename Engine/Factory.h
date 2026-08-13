@@ -1,7 +1,7 @@
 #pragma once
-#include <memory>
 #include "Object.h"
 #include "Singleton.h"
+#include <memory>
 #include <map>
 
 
@@ -31,7 +31,7 @@ namespace nu
 		requires std::derived_from<T, Object>
 		void Register(const std::string& name);
 
-		template <typename T >
+		template <typename T>
 		requires std::derived_from<T, Object>
 		std::unique_ptr<T> Create(const std::string& name);
 
@@ -61,9 +61,9 @@ namespace nu
 	inline std::unique_ptr<T> Factory::Create(const std::string& name)
 	{
 		std::string lowerName = ToLower(name);
-		if (m_registry.contains(lowerName))
+		if (!m_registry.contains(lowerName))
 		{
-			std::cerr << "Object not registered " << name << std::endl;
+			std::cerr << "Object not registered: " << name << std::endl;
 			return std::unique_ptr<T>();
 		}
 
