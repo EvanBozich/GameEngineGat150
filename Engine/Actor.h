@@ -4,6 +4,7 @@
 #include "Model.h"
 #include "Resource.h"
 #include "Object.h"
+#include "Component.h"
 #include <string>
 #include <memory>
 
@@ -31,10 +32,10 @@ namespace nu {
             m_tag{actorDesc.tag},
             m_transform{ actorDesc.transform },
             m_velocity{ actorDesc.velocity },
-            m_model{ actorDesc.model },
+            //m_model{ actorDesc.model },
             m_damping {actorDesc.damping},
-            m_lifespan {actorDesc.lifespan},
-            m_texture {actorDesc.texture}
+            m_lifespan {actorDesc.lifespan}
+            //m_texture {actorDesc.texture}
         { }
 
         CLASS_PROTOTYPE(Actor)
@@ -60,7 +61,7 @@ namespace nu {
         Scene* GetScene() { return m_scene; }
 
         float GetRadius() const;
-        void SetModel(std::shared_ptr<Model> model) { m_model = model; }
+        //void SetModel(std::shared_ptr<Model> model) { m_model = model; }
 
         void SetDestroyed(bool destroy = true) { m_destroyed = destroy; }
         bool GetDestroyed() const { return m_destroyed; }
@@ -76,11 +77,11 @@ namespace nu {
         float m_damping = 0.0f;
         float m_lifespan{ 0.0f };
         bool m_destroyed{ false };
+        std::vector<Component*> m_components;
+
 
         Transform m_transform;
         Vector2 m_velocity{ 0,0 };
-        res_t<Model> m_model;
-        res_t<Texture> m_texture;
         Scene* m_scene = nullptr;
     };
 }

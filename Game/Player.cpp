@@ -7,6 +7,10 @@
 #include "SpaceGame.h"
 
 
+FACTORY_REGISTER(Player);
+
+
+
 void Player::Update(float dt)
 {
     float thrust = 0.0f;

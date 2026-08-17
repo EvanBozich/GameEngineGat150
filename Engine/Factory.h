@@ -6,6 +6,19 @@
 #include <map>
 
 
+#define FACTORY_REGISTER(classname) \
+class Register##classname \
+{ \
+public: \
+    Register##classname() \
+    { \
+        nu::Factory::Instance().Register<classname>(#classname); \
+    } \
+}; \
+static Register##classname registerInstance;
+
+
+
 namespace nu
 {
 	class ICreator
@@ -73,6 +86,8 @@ namespace nu
 			return;
 		}
 
+		std::cout << "Object Registered: " << name << std::endl;
+
 		m_registry[lowerName] = std::make_unique<Creator<T>>();
 	}
 
@@ -112,6 +127,8 @@ namespace nu
 		{
 			object.release();
 
+			std::cout << "Object created: " << name << std::endl;
+
 			return std::unique_ptr<T>(derived);
 		}
 		else
@@ -119,6 +136,8 @@ namespace nu
 			std::cerr << "Object not derived from type: " << name << std::endl;
 
 		}
+
+		std::cout << "Object created: " << name << std::endl;
 
 		return std::unique_ptr<T>();
 	}
