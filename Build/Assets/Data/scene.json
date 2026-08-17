@@ -7,6 +7,7 @@
       "tag": "Player",
       "active": true,
       "damping": 1,
+      "score": 0,
       "speed": 800,
       "texture": "textures/player.png",
       "transform": {
@@ -22,7 +23,7 @@
       "tag": "Enemy",
       "active": true,
       "damping": 1,
-      "speed": 800,
+      "speed": 400,
       "texture": "textures/enemy.png",
       "transform": {
         "position": [ 640, 512 ],
@@ -52,7 +53,7 @@
       "tag": "Enemy",
       "active": true,
       "damping": 1,
-      "speed": 800,
+      "speed": 250,
       "texture": "textures/asteroid.png",
       "transform": {
         "position": [ 640, 512 ],

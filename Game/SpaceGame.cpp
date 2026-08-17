@@ -11,6 +11,7 @@ bool SpaceGame::Initialize()
 {
 	Game::Initialize();
 	m_scene = new Scene();
+	m_scene->SetGame(this);
 	m_scene->Load("data/scene.json");
 
 
@@ -47,7 +48,7 @@ void SpaceGame::Update(float dt)
 	case GameState::StartGame:
 		m_score = 0;
 		m_lives = 3;
-		m_health = 100;
+		m_health = 0;
 		m_gameState = GameState::StartLevel;
 		break;
 	case GameState::StartLevel:
@@ -104,12 +105,12 @@ void SpaceGame::Draw(nu::Renderer& renderer)
 		break;
 	case SpaceGame::GameState::Game:
 		//draw score/lives
-		m_scoreText->Create(renderer, "Score: " + std::to_string(m_score), { 1.0f,1.0f,1.0f });
-		m_livesText->Create(renderer, "Lives: " + std::to_string(m_lives), { 1.0f,1.0f,1.0f });
-		m_healthText->Create(renderer, "Health " + std::to_string(m_health), { 1.0f, 1.0f, 1.0f });
+		m_scoreText->Create(renderer, "Score  " + std::to_string(m_score), { 1.0f,1.0f,1.0f });
+		m_livesText->Create(renderer, "Lives  " + std::to_string(m_lives), { 1.0f,1.0f,1.0f });
+		m_healthText->Create(renderer, "Health  " + std::to_string(m_health), { 1.0f,1.0f,1.0f });
 		m_scoreText->Draw(renderer, 32, 32);
 		m_livesText->Draw(renderer, 1020, 32);
-		m_healthText->Draw(renderer, 640, 32);
+		m_healthText->Draw(renderer, 500, 32);
 		break;
 	case SpaceGame::GameState::GameOver:
 		m_gameOverText->Draw(renderer, 400, 400);
@@ -124,10 +125,12 @@ void SpaceGame::Draw(nu::Renderer& renderer)
 void SpaceGame::OnPlayerDead()
 {
 	m_health -= 25;
+
 	if (m_health == 0)
 	{
 		m_lives--;
 	}
+
 	if (m_lives == 0)
 	{
 		m_gameState = GameState::GameOver;
