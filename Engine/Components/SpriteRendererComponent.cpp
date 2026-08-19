@@ -13,14 +13,18 @@ namespace nu
 	{
 		if (m_texture)
 		{
-			renderer.DrawTexture(*m_texture, GetOwner()->GetTransform().position.x, GetOwner()->GetTransform().position.y, GetOwner()->GetTransform().rotation, GetOwner()->GetTransform().scale);
+			renderer.DrawTexture(*m_texture, 
+				GetOwner()->GetTransform().position.x, 
+				GetOwner()->GetTransform().position.y, 
+				GetOwner()->GetTransform().rotation, 
+				GetOwner()->GetTransform().scale);
 		}
 
 	}
 
 	void SpriteRendererComponent::Read(const json::value_t& value)
 	{
-		Object::Read(value);
+		RendererComponent::Read(value);
 
 		std::string textureName;
 		JSON_READ_NAME(value, "texture", textureName);

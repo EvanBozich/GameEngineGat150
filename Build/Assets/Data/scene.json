@@ -10,7 +10,10 @@
       "score": 0,
       "speed": 800,
       "transform": {
-        "position": [ 640, 512 ],
+        "position": [
+          640,
+          512
+        ],
         "rotation": 0,
         "scale": 1
       },
@@ -18,7 +21,10 @@
         {
           "type": "SpriteRendererComponent",
           "texture": "textures/player.png"
-
+        },
+        {
+          "type": "CirclelColliderComponent",
+          "radius": 64
         }
       ]
     },
@@ -30,12 +36,24 @@
       "active": true,
       "damping": 1,
       "speed": 400,
-      "texture": "textures/enemy.png",
       "transform": {
-        "position": [ 640, 512 ],
+        "position": [
+          640,
+          512
+        ],
         "rotation": 0,
         "scale": 1
-      }
+      },
+      "components": [
+        {
+          "type": "SpriteRendererComponent",
+          "texture": "textures/enemy.png"
+        },
+        {
+          "type": "CircleColliderComponent",
+          "radius": 64
+        }
+      ]
     },
     {
       "name": "BulletPrototype",
@@ -44,13 +62,26 @@
       "tag": "Bullet",
       "active": true,
       "damping": 1,
+      "lifespan": 2,
       "speed": 800,
-      "texture": "textures/missle.png",
       "transform": {
-        "position": [ 640, 512 ],
+        "position": [
+          640,
+          512
+        ],
         "rotation": 0,
         "scale": 1
-      }
+      },
+      "components": [
+        {
+          "type": "SpriteRendererComponent",
+          "texture": "textures/missle.png"
+        },
+        {
+          "type": "CircleColliderComponent",
+          "radius": 24
+        }
+      ]
     },
     {
       "name": "AsteroidPrototype",
@@ -60,12 +91,24 @@
       "active": true,
       "damping": 1,
       "speed": 250,
-      "texture": "textures/asteroid.png",
       "transform": {
-        "position": [ 640, 512 ],
+        "position": [
+          640,
+          512
+        ],
         "rotation": 0,
         "scale": 1
-      }
+      },
+      "components": [
+        {
+          "type": "SpriteRendererComponent",
+          "texture": "textures/asteroid.png"
+        },
+        {
+          "type": "CircleColliderComponent",
+          "radius": 64
+        }
+      ]
     }
   ]
 }

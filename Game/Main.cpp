@@ -10,7 +10,6 @@
 #include <fstream>
 using namespace nu;
 
-
 int main()
 {
     nu::SetWorkingDirectory("assets");

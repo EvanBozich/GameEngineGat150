@@ -39,17 +39,21 @@ void Player::Update(float dt)
 
     if (nu::Engine::Get().GetInput().GetKeyDown(SDL_SCANCODE_SPACE))
     {
-        BulletDesc desc;
-        desc.name = "Bullet";
-        desc.tag = "Bullet";
-        //desc.model = Assets::bulletModel;
-        desc.texture = nu::Resources().Get<nu::Texture>("textures/missle.png", nu::Engine::Get().GetRenderer());
-        desc.transform = m_transform;
-        desc.speed = 800.0f;
-        desc.damping = 1.0f;
-        desc.lifespan = 2.0f;
+        auto bullet = nu::Factory::Instance().Create<Bullet>("BulletPrototype");
+        bullet->SetTransform(m_transform);
+        bullet->SetScale(2.0f);
 
-        std::unique_ptr<Bullet> bullet = std::make_unique<Bullet>(desc);
+        //BulletDesc desc;
+        //desc.name = "Bullet";
+        //desc.tag = "Bullet";
+        ////desc.model = Assets::bulletModel;
+        //desc.texture = nu::Resources().Get<nu::Texture>("textures/missle.png", nu::Engine::Get().GetRenderer());
+        //desc.transform = m_transform;
+        //desc.speed = 800.0f;
+        //desc.damping = 1.0f;
+        //desc.lifespan = 2.0f;
+
+        //std::unique_ptr<Bullet> bullet = std::make_unique<Bullet>(desc);
         m_scene->AddActor(std::move(bullet));
     }
 
@@ -79,7 +83,6 @@ void Player::OnCollision(Actor* other)
 {
     if (other->GetTag() == "Enemy")
     {
-
             SetDestroyed();
             ((SpaceGame*)m_scene->GetGame())->OnPlayerDead();
 
