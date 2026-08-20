@@ -23,7 +23,7 @@
           "texture": "textures/player.png"
         },
         {
-          "type": "CirclelColliderComponent",
+          "type": "CircleColliderComponent",
           "radius": 64
         }
       ]
@@ -62,7 +62,7 @@
       "tag": "Bullet",
       "active": true,
       "damping": 1,
-      "lifespan": 2,
+      "lifespan": 1,
       "speed": 800,
       "transform": {
         "position": [

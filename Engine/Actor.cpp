@@ -17,7 +17,8 @@ namespace nu
         Object(other),
         m_tag{other.m_tag},
         m_transform{other.m_transform},
-        m_damping{other.m_damping}
+        m_damping{other.m_damping},
+        m_lifespan{other.m_lifespan}
     {
         //clone all components
         for (const auto& component : other.m_components)
@@ -110,6 +111,8 @@ namespace nu
     void Actor::AddComponent(std::unique_ptr<Component> component)
     {
         component->SetOwner(this);
+        std::cout << component->GetOwner()->GetName() << std::endl;
+
         m_components.push_back(std::move(component));
     }
 }

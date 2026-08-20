@@ -10,7 +10,7 @@ namespace nu
     {
 
        const CircleColliderComponent* circleCollider = dynamic_cast<const CircleColliderComponent*>(&other);
-       if (!circleCollider)
+       if (circleCollider == nullptr)
        {
            return false;
        }
@@ -18,7 +18,7 @@ namespace nu
        float distance = GetOwner()->GetTransform().position.Distance(other.GetOwner()->GetTransform().position);
         
 
-        return distance <= m_radius + circleCollider->GetRadius();
+        return distance <= (m_radius + circleCollider->GetRadius());
     }
 
     void CircleColliderComponent::Read(const json::value_t& value)
