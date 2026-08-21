@@ -18,6 +18,7 @@
 #include "Json.h"
 #include "StringUtils.h"
 #include "Factory.h"
+#include "Physics/Physics.h"
 #include <vector>
 #include <iostream>
 #include <string>
@@ -39,6 +40,7 @@ namespace nu
 		Time& GetTime(){ return m_time; }
 		Audio& GetAudio() { return m_audio; }
 		ParticleSystem& GetPS() { return m_particleSystem; }
+		Physics& GetPhysics() { return m_physics; }
 
 
 		//Singleton stuff 
@@ -51,6 +53,7 @@ namespace nu
 		Time m_time;
 		Audio m_audio;
 		ParticleSystem m_particleSystem;
+		Physics m_physics;
 	};
 
 }
