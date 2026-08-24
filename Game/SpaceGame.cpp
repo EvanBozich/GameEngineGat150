@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "Assets.h"
+#include <SDL3/SDL.h>
 #include <memory>
 
 using namespace nu;

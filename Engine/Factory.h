@@ -2,8 +2,8 @@
 #include "Object.h"
 #include "Singleton.h"
 #include "StringUtils.h"
-#include <memory>
 #include <map>
+
 
 
 #define FACTORY_REGISTER(classname) \

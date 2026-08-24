@@ -1,11 +1,11 @@
 #pragma once
 #include "Renderer.h"
 #include "Random.h"
-#include "Vector2.h"
+#include "Math/Vector2.h"
 #include "Input.h"
 #include "GameTime.h"
-#include "MathUtil.h"
-#include "Transform.h"
+#include "Math/MathUtil.h"
+#include "Math/Transform.h"
 #include "Actor.h"
 #include "Scene.h"
 #include "File.h"
@@ -19,9 +19,7 @@
 #include "StringUtils.h"
 #include "Factory.h"
 #include "Physics/Physics.h"
-#include <vector>
-#include <iostream>
-#include <string>
+#include <SDL3/SDL.h>
 
 
 namespace nu 

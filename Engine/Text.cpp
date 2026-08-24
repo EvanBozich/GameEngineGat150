@@ -1,9 +1,6 @@
 #include "pch.h"
-#include <SDL3/SDL.h>
-#include <SDL3_ttf/SDL_ttf.h>
-#include <iostream>
 #include "Renderer.h"
-#include "Vector3.h"
+#include "Math/Vector3.h"
 #include "Text.h"
 
 

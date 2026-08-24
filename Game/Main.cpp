@@ -8,6 +8,7 @@
 #include <memory>
 #include <random>
 #include <fstream>
+
 using namespace nu;
 
 int main()

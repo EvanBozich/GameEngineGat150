@@ -13,6 +13,15 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Assets">
+      <UniqueIdentifier>{cc03b7b4-3e84-4149-a1ec-bdedb0c5ecb2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets\animations">
+      <UniqueIdentifier>{b006d25b-3592-4c29-a8c2-4946dd4d04a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets\scenes">
+      <UniqueIdentifier>{308a34bd-4e07-45c2-90a5-07b182c4d3d1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -53,7 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Build\Assets\Data\scene.json">
-      <Filter>Resource Files</Filter>
+      <Filter>Assets\scenes</Filter>
     </None>
   </ItemGroup>
 </Project>

@@ -5,6 +5,7 @@
 #include "Engine.h"
 #include "Random.h"
 #include "SpaceGame.h"
+#include <SDL3/SDL.h>
 
 
 FACTORY_REGISTER(Player);

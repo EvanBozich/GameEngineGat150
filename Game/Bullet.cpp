@@ -1,5 +1,5 @@
 #include "Bullet.h"
-#include "MathUtil.h"
+#include "Math/MathUtil.h"
 #include "Factory.h"
 
 FACTORY_REGISTER(Bullet);

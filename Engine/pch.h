@@ -8,7 +8,7 @@
 #define PCH_H
 
 // add headers that you want to pre-compile here
-#include "framework.h"
+#include "Core/framework.h"
 
 //std library include
 #include <array>
@@ -19,6 +19,7 @@
 #include <sstream>
 #include <fstream>
 #include <memory>
+#include <string>
 #include <algorithm>
 
 //Third Party stuff
@@ -26,5 +27,7 @@
 #include <SDL3_image/SDL_image.h>
 #include <SDL3_ttf/SDL_ttf.h>
 #include <fmod.hpp>
+#include <rapidjson/istreamwrapper.h>
+
 
 #endif //PCH_H

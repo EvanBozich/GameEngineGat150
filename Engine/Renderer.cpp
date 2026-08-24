@@ -1,8 +1,8 @@
 #include "pch.h"
 #include "Renderer.h"
-#include "MathUtil.h"
+#include "Math/MathUtil.h"
 #include "Texture.h"
-#include <iostream>
+
 
 namespace nu 
 {
