@@ -1,9 +1,9 @@
 #include "Player.h"
 #include "Bullet.h"
 #include "Assets.h"
-#include "Renderer.h"
+#include "Renderer/Renderer.h"
 #include "Engine.h"
-#include "Random.h"
+#include "Math/Random.h"
 #include "SpaceGame.h"
 #include <SDL3/SDL.h>
 

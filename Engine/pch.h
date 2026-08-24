@@ -8,7 +8,7 @@
 #define PCH_H
 
 // add headers that you want to pre-compile here
-#include "Core/framework.h"
+#include "framework.h"
 
 //std library include
 #include <array>

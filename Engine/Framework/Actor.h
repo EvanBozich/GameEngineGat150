@@ -1,10 +1,10 @@
 #pragma once
 
 #include "Math/Transform.h"
-#include "Model.h"
-#include "Resource.h"
+#include "Renderer/Model.h"
+#include "Resources/Resource.h"
 #include "Object.h"
-#include "Component.h"
+#include "Core/Component.h"
 
 namespace nu {
     class Scene;

@@ -2,7 +2,7 @@
 #include "Resource.h"
 #include <map>
 #include <string>
-#include "Singleton.h"
+#include "Core/Singleton.h"
 #include <iostream>
 
 
