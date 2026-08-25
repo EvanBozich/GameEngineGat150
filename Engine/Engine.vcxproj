@@ -193,7 +193,10 @@
     <ClInclude Include="Audio\Audio.h" />
     <ClInclude Include="Components\CircleColliderComponent.h" />
     <ClInclude Include="Components\ColliderComponent.h" />
+    <ClInclude Include="Components\PhysicsComponent.h" />
     <ClInclude Include="Components\RendererComponent.h" />
+    <ClInclude Include="Components\RigidBodyPhysicsComponent.h" />
+    <ClInclude Include="Components\SpriteAnimationRendererComponent.h" />
     <ClInclude Include="Components\SpriteRendererComponent.h" />
     <ClInclude Include="Core\Component.h" />
     <ClInclude Include="Core\Factory.h" />
@@ -230,6 +233,9 @@
   <ItemGroup>
     <ClCompile Include="Audio\Audio.cpp" />
     <ClCompile Include="Components\CircleColliderComponent.cpp" />
+    <ClCompile Include="Components\PhysicsComponent.cpp" />
+    <ClCompile Include="Components\RigidBodyPhysicsComponent.cpp" />
+    <ClCompile Include="Components\SpriteAnimationRendererComponent.cpp" />
     <ClCompile Include="Components\SpriteRendererComponent.cpp" />
     <ClCompile Include="Core\File.cpp" />
     <ClCompile Include="Core\GameTime.cpp" />
