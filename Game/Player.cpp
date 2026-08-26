@@ -4,6 +4,7 @@
 #include "Renderer/Renderer.h"
 #include "Engine.h"
 #include "Math/Random.h"
+#include "Components/PhysicsComponent.h"
 #include "SpaceGame.h"
 #include <SDL3/SDL.h>
 
@@ -23,11 +24,26 @@ void Player::Update(float dt)
     if (nu::Engine::Get().GetInput().GetKeyDown(SDL_SCANCODE_A)) roatate = -180.0f;
     if (nu::Engine::Get().GetInput().GetKeyDown(SDL_SCANCODE_D)) roatate = +180.0f;
 
-    SetRoation(m_transform.rotation + roatate * dt);
 
-    nu::Vector2 forward{ 1, 0 }; //->
-    nu::Vector2 velocity = forward.Rotate(m_transform.rotation * nu::math::DegToRad) * thrust;
-    AddVelocity(velocity * dt);
+    auto physicsComponent = GetComponent<nu::PhysicsComponent>();
+
+    if (physicsComponent)
+    {
+        nu::Vector2 forward{ 1, 0 }; //->
+        nu::Vector2 force = forward.Rotate(m_transform.rotation * nu::math::DegToRad) * thrust;
+        physicsComponent->ApplyForce(force);
+
+        physicsComponent->ApplyTorque(roatate);
+
+        nu::Vector2 position = physicsComponent->GetPosition();
+
+        position.x = nu::math::Wrap((float)0, 1280.0f, m_transform.position.x);
+        position.y = nu::math::Wrap(float(0), 1024.0f, m_transform.position.y);
+        physicsComponent->SetPosition(position);
+    }
+
+
+    //AddVelocity(velocity * dt);
 
     nu::Particle particle;
     particle.position = m_transform.position;
@@ -44,17 +60,6 @@ void Player::Update(float dt)
         bullet->SetTransform(m_transform);
         bullet->SetScale(2.0f);
 
-        //BulletDesc desc;
-        //desc.name = "Bullet";
-        //desc.tag = "Bullet";
-        ////desc.model = Assets::bulletModel;
-        //desc.texture = nu::Resources().Get<nu::Texture>("textures/missle.png", nu::Engine::Get().GetRenderer());
-        //desc.transform = m_transform;
-        //desc.speed = 800.0f;
-        //desc.damping = 1.0f;
-        //desc.lifespan = 2.0f;
-
-        //std::unique_ptr<Bullet> bullet = std::make_unique<Bullet>(desc);
         m_scene->AddActor(std::move(bullet));
     }
 
@@ -82,6 +87,7 @@ void Player::Read(const nu::json::value_t& value)
 
 void Player::OnCollision(Actor* other)
 {
+    return; //Don't die
     if (other->GetTag() == "Enemy")
     {
             SetDestroyed();

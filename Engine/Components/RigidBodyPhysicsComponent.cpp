@@ -67,6 +67,17 @@ namespace nu
 	{
 		return GetOwner()->GetTransform().position;
 	}
+
+	void RigidBodyPhysicsComponent::SetRotaion(float roation)
+	{
+		GetOwner()->SetRoation(roation);
+	}
+
+	float RigidBodyPhysicsComponent::GetRotaion() const
+	{
+		return GetOwner()->GetTransform().rotation;
+	}
+
 	void RigidBodyPhysicsComponent::Read(const json::value_t& value)
 	{
 		PhysicsComponent::Read(value);

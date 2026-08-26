@@ -29,7 +29,6 @@
       "prototype": true,
       "tag": "Player",
       "active": true,
-      "damping": 1,
       "score": 0,
       "speed": 800,
       "transform": {
@@ -47,7 +46,14 @@
         },
         {
           "type": "CircleColliderComponent",
-          "radius": 64
+          "radius": 10
+        },
+        {
+          "type": "Box2DPhysicsComponent",
+          "linear_damping": 2.5,
+          "angular_damping": 2.5,
+          "size": [ 48, 48 ],
+          "gravity_scale": 0
         }
       ]
     },
@@ -75,6 +81,13 @@
         {
           "type": "CircleColliderComponent",
           "radius": 64
+        },
+        {
+          "type": "Box2DPhysicsComponent",
+          "linear_damping": 2.5,
+          "angular_damping": 2.5,
+          "size": [ 48, 48 ],
+          "gravity_scale": 0
         }
       ]
     },
@@ -103,6 +116,13 @@
         {
           "type": "CircleColliderComponent",
           "radius": 24
+        },
+        {
+          "type": "Box2DPhysicsComponent",
+          "linear_damping": 2.5,
+          "angular_damping": 2.5,
+          "size": [ 48, 48 ],
+          "gravity_scale": 0
         }
       ]
     },
@@ -130,6 +150,11 @@
         {
           "type": "CircleColliderComponent",
           "radius": 64
+        },
+        {
+          "type": "RigidBodyPhysicsComponent",
+          "damping": 1.5,
+          "angular_damping": 1.5
         }
       ]
     }
