@@ -22,8 +22,8 @@ void Bullet::Update(float dt)
 
 		nu::Vector2 position = physicsComponent->GetPosition();
 
-		position.x = nu::math::Wrap((float)0, 1280.0f, m_transform.position.x);
-		position.y = nu::math::Wrap(float(0), 1024.0f, m_transform.position.y);
+		position.x = nu::math::Wrap((float)0, 1280.0f, position.x);
+		position.y = nu::math::Wrap(float(0), 1024.0f, position.y);
 		physicsComponent->SetPosition(position);
 
 		//physicsComponent->ApplyTorque(roatate);
