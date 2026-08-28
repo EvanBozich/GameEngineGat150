@@ -72,12 +72,15 @@ namespace nu {
 
         void SetTransform(const Transform& transform) { m_transform = transform; }
 
+        bool GetPersistent() const { return m_persistent; }
+
         friend Scene;
 
     protected:
         std::string m_tag;
         float m_lifespan = 0.0f ;
         bool m_destroyed{ false };
+        bool m_persistent = false;
         std::vector<std::unique_ptr<Component>> m_components;
 
 

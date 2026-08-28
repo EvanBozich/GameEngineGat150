@@ -5,6 +5,7 @@
       "prototype": false,
       "name": "Bat",
       "tag": "Enemy",
+      "persistent": true,
       "active": true,
       "transform": {
         "position": [
@@ -22,6 +23,29 @@
           "loop": true
         }
       ]
+    },
+    {
+      "type": "Actor",
+      "prototype": false,
+      "name": "Tilemap",
+      "tag": "Ground",
+      "persistent": true,
+      "active": true,
+      "transform": {
+        "position": [
+          0,
+          0
+        ],
+        "rotation": 0,
+        "scale": 2
+      },
+      "components": [
+        {
+          "type": "TilemapRendererComponent",
+          "texture_frames": "tilemaps/world.json"
+        }
+      ]
+
     },
     {
       "name": "PlayerPrototype",
@@ -43,10 +67,6 @@
         {
           "type": "SpriteRendererComponent",
           "texture": "textures/player.png"
-        },
-        {
-          "type": "CircleColliderComponent",
-          "radius": 10
         },
         {
           "type": "Box2DPhysicsComponent",
@@ -77,10 +97,6 @@
         {
           "type": "SpriteRendererComponent",
           "texture": "textures/enemy.png"
-        },
-        {
-          "type": "CircleColliderComponent",
-          "radius": 64
         },
         {
           "type": "Box2DPhysicsComponent",
@@ -114,15 +130,12 @@
           "texture": "textures/missle.png"
         },
         {
-          "type": "CircleColliderComponent",
-          "radius": 24
-        },
-        {
           "type": "Box2DPhysicsComponent",
           "linear_damping": 2.5,
           "angular_damping": 2.5,
           "size": [ 48, 48 ],
-          "gravity_scale": 0
+          "gravity_scale": 0,
+          "is_sensor": true
         }
       ]
     },
@@ -146,10 +159,6 @@
         {
           "type": "SpriteRendererComponent",
           "texture": "textures/asteroid.png"
-        },
-        {
-          "type": "CircleColliderComponent",
-          "radius": 64
         },
         {
           "type": "RigidBodyPhysicsComponent",

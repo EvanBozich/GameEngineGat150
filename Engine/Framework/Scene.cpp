@@ -15,7 +15,7 @@ namespace nu {
 			actor->Update(dt);
 		}
 
-		UpdateCollisions();
+		//UpdateCollisions();
 
 		for (auto& actor : m_actors)
 		{
@@ -42,33 +42,32 @@ namespace nu {
 		}
 	}
 
-	void Scene::UpdateCollisions()
+	//void Scene::UpdateCollisions()
+	//{
+	//	for (auto& actorA : m_actors)
+	//	{
+	//		for (auto& actorB : m_actors)
+	//		{
+	//			if (actorA == actorB || actorA->m_destroyed || actorB->m_destroyed) continue;
+
+	//			auto colliderA = actorA->GetComponent<ColliderComponent>();
+	//			auto colliderB = actorB->GetComponent<ColliderComponent>();
+
+	//			if (!colliderA || !colliderB) continue;
+
+	//			if (colliderA->CheckCollision(*colliderB))
+	//			{
+	//				actorA->OnCollision(actorB.get());
+	//				actorB->OnCollision(actorA.get());
+	//			}
+	//		}
+	//	}
+	//}
+
+	void Scene::RemoveAllActors(bool force)
 	{
-		for (auto& actorA : m_actors)
-		{
-			for (auto& actorB : m_actors)
-			{
-				if (actorA == actorB || actorA->m_destroyed || actorB->m_destroyed) continue;
-
-				auto colliderA = actorA->GetComponent<ColliderComponent>();
-				auto colliderB = actorB->GetComponent<ColliderComponent>();
-
-				if (!colliderA || !colliderB) continue;
-
-				if (colliderA->CheckCollision(*colliderB))
-				{
-					actorA->OnCollision(actorB.get());
-					actorB->OnCollision(actorA.get());
-				}
-			}
-		}
-	}
-
-	void Scene::RemoveAllActors()
-	{
-
-
-		m_actors.clear();
+		std::erase_if(m_actors, [force](auto& actor) {return !actor->GetPersistent() || force;});
+		
 	}
 
 	void Scene::AddActor(std::unique_ptr<Actor> actor)
@@ -80,7 +79,7 @@ namespace nu {
 	bool Scene::Load(const std::string& sceneName)
 	{
 		json::document_t document;
-		if (json::Load("data/scene.json", document))
+		if (json::Load(sceneName, document))
 		{
 
 			if (JSON_HAS_NAME(document, "actors"))

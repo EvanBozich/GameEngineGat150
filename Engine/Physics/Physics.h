@@ -35,5 +35,7 @@ namespace nu
 
 	private:
 		b2WorldId m_worldId;
+
+		void ProcessCollisionEvents();
 	};
 }

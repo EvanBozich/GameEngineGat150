@@ -17,7 +17,6 @@ namespace nu
         Object(other),
         m_tag{other.m_tag},
         m_transform{other.m_transform},
-        //m_damping{other.m_damping},
         m_lifespan{other.m_lifespan}
     {
         //clone all components
@@ -92,6 +91,8 @@ namespace nu
 
         JSON_READ_NAME(value, "tag", m_tag);
         JSON_READ_NAME(value, "lifespan", m_lifespan);
+        JSON_READ_NAME(value, "persistent", m_persistent);
+
 
         if (JSON_HAS_NAME(value, "components"))
         {

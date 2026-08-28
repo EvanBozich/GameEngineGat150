@@ -154,6 +154,12 @@
     <ClInclude Include="Components\Box2DPhysicsComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
+    <ClInclude Include="Renderer\Tilemap.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\TilemapRenderComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Components\SpriteRendererComponent.cpp">
@@ -228,6 +234,12 @@
       <Filter>Physics</Filter>
     </ClCompile>
     <ClCompile Include="Components\Box2DPhysicsComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer\Tilemap.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\TilemapRenderComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
   </ItemGroup>

@@ -22,6 +22,9 @@
     <Filter Include="Assets\scenes">
       <UniqueIdentifier>{308a34bd-4e07-45c2-90a5-07b182c4d3d1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Assets\Tilemaps">
+      <UniqueIdentifier>{52911755-8857-47a7-aab5-32e295fe46d7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -66,6 +69,9 @@
     </None>
     <None Include="..\Build\Assets\Animations\bat_idle.json">
       <Filter>Assets\animations</Filter>
+    </None>
+    <None Include="..\Build\Assets\Tilemaps\world.json">
+      <Filter>Assets\Tilemaps</Filter>
     </None>
   </ItemGroup>
 </Project>
