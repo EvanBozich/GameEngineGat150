@@ -17,7 +17,6 @@ public:
 	};
 public:
 	SpaceGame() = default;
-	SpaceGame(nu::Scene* scene) : nu::Game{scene} {}
 
 	bool Initialize() override;
 

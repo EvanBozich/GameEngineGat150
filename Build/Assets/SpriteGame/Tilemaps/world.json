@@ -1,4 +1,12 @@
 { "compressionlevel":-1,
+ "editorsettings":
+    {
+     "export":
+        {
+         "format":"json",
+         "target":"world.json"
+        }
+    },
  "height":20,
  "infinite":false,
  "layers":[
@@ -25,7 +33,7 @@
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
          "height":20,
          "id":1,
-         "name":"Tile Layer 1",
+         "name":"ground",
          "opacity":1,
          "properties":[
                 {

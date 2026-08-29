@@ -1,10 +1,11 @@
 // Game.cpp : This file contains the 'main' function. Program execution begins and ends there.
-#include "Player.h"
-#include "Enemy.h"
-#include "Assets.h"
-#include "SpaceGame.h"
+#include "SpaceGame/Player.h"
+#include "SpaceGame/Enemy.h"
+#include "SpaceGame/Assets.h"
+#include "SpaceGame/SpaceGame.h"
+#include "SpriteGame/SpriteGame.h"
 #include "Engine.h"
-#include "Bullet.h"
+#include "SpaceGame/Bullet.h"
 #include <memory>
 #include <random>
 #include <fstream>
@@ -43,8 +44,9 @@ int main()
    
     Engine::Get().Initialize();
 
-    SpaceGame game;
-    game.Initialize();
+    //SpaceGame game;
+    std::unique_ptr game = std::make_unique<SpriteGame>();
+    game->Initialize();
   
  
     SDL_Event e;
@@ -73,15 +75,16 @@ int main()
         nu::Engine::Get().GetRenderer().SetColorInt(0, 0, 0);
         nu::Engine::Get().GetRenderer().Clear();
         
-        game.Update(dt);
+        game->Update(dt);
 
-        game.Draw(nu::Engine::Get().GetRenderer());
+        game->Draw(nu::Engine::Get().GetRenderer());
 
         Engine::Get().GetPS().Draw(Engine::Get().GetRenderer());
 
         nu::Engine::Get().GetRenderer().Present();
     }
 
+    game.reset();
     //shutdown
     Engine::Get().Shutdown();
 

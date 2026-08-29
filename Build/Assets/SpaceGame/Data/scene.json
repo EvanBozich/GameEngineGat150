@@ -27,8 +27,8 @@
     {
       "type": "Actor",
       "prototype": false,
-      "name": "Tilemap",
-      "tag": "Ground",
+      "name": "tilemap",
+      "tag": "ground",
       "persistent": true,
       "active": true,
       "transform": {

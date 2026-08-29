@@ -63,8 +63,11 @@ namespace nu
 				m_layers.push_back(layer);
 			}
 		}
+
 		return true;
 	}
+
+
 	Rect Tilemap::GetTileRect(const Layer& layer, int tileId)
 	{
 		if (tileId == 0) return Rect();
@@ -87,6 +90,9 @@ namespace nu
 
 	Vector2 Tilemap::GetTilePosition(const Layer& layer, int tileIndex)
 	{
-		return Vector2();
+		int column = tileIndex & layer.width;
+		int row = tileIndex / layer.width;
+		
+		return Vector2{ (float)(column * m_tileWidth), (float)(row * m_tileHeight) };
 	}
 }

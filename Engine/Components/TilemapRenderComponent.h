@@ -9,7 +9,7 @@ namespace nu
 	public:
 		CLASS_PROTOTYPE(TilemapRendererComponent)
 
-			TilemapRendererComponent(const TilemapRendererComponent& other);
+		TilemapRendererComponent(const TilemapRendererComponent& other);
 		TilemapRendererComponent() = default;
 		void Start() override;
 		void Draw(const Renderer& renderer) override;
