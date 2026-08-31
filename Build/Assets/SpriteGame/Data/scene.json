@@ -17,18 +17,30 @@
       },
       "components": [
         {
-          "type": "SpriteAnimationRendererComponent",
-          "texture_frames": "animations/bat_idle.json",
-          "frames_per_second": 10,
-          "loop": true
+          "type": "SpriteAnimatorRendererComponent",
+          "default_animation": "idle",
+          "animations": [
+            {
+              "name": "run",
+              "texture_frames": "animations/bat_idle.json",
+              "frames_per_second": 10,
+              "loop": true
+            },
+            {
+              "name": "idle",
+              "texture_frames": "animations/bat_idle.json",
+              "frames_per_second": 10,
+              "loop": true
+            }
+          ]
         }
       ]
     },
     {
       "type": "Actor",
       "prototype": false,
-      "name": "ground",
-      "tag": "tilemap",
+      "name": "Tilemap",
+      "tag": "Ground",
       "persistent": true,
       "active": true,
       "transform": {
@@ -42,7 +54,6 @@
       "components": [
         {
           "type": "TilemapRendererComponent",
-          "texture_frames": "tilemaps/world.json",
           "tilemap_name": "tilemaps/world.json"
         }
       ]
@@ -162,9 +173,11 @@
           "texture": "textures/asteroid.png"
         },
         {
-          "type": "RigidBodyPhysicsComponent",
-          "damping": 1.5,
-          "angular_damping": 1.5
+          "type": "Box2DPhysicsComponent",
+          "linear_damping": 2.5,
+          "angular_damping": 2.5,
+          "size": [ 48, 48 ],
+          "gravity_scale": 0
         }
       ]
     }

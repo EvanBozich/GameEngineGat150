@@ -124,6 +124,7 @@ namespace nu
         destRect.y = y - destRect.h * 0.5f;
 
         // https://wiki.libsdl.org/SDL3/SDL_RenderTexture
+        SDL_SetTextureScaleMode(texture.m_texture, SDL_SCALEMODE_NEAREST);
         SDL_RenderTextureRotated(m_renderer, texture.m_texture, NULL, &destRect, angle, NULL, (flipH) ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
     }
 

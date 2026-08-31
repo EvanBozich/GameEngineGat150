@@ -160,6 +160,9 @@
     <ClInclude Include="Components\TilemapRenderComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
+    <ClInclude Include="Components\SpriteAnimatorRendererComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Components\SpriteRendererComponent.cpp">
@@ -242,5 +245,6 @@
     <ClCompile Include="Components\TilemapRenderComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
+    <ClCompile Include="Components\SpriteAnimatorRendererComponent.cpp" />
   </ItemGroup>
 </Project>
