@@ -37,9 +37,10 @@ void Player::Update(float dt)
 
         nu::Vector2 position = physicsComponent->GetPosition();
 
-        position.x = nu::math::Wrap(0.0f, 1280.0f, position.x);
-        position.y = nu::math::Wrap(0.0f, 1024.0f, position.y);
-        physicsComponent->SetPosition(position);
+        //position.x = nu::math::Wrap(0.0f, 1280.0f, position.x);
+        //position.y = nu::math::Wrap(0.0f, 1024.0f, position.y);
+        //physicsComponent->SetPosition(position);
+        nu::Engine::Get().GetRenderer().SetCamera(position);
     }
 
 

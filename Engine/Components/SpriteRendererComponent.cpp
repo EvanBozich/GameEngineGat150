@@ -34,7 +34,7 @@ namespace nu
 					GetOwner()->GetTransform().position.y,
 					GetOwner()->GetTransform().rotation,
 					GetOwner()->GetTransform().scale,
-					m_flipH);
+					m_flipH, m_origin);
 			}
 			else
 			{
@@ -45,7 +45,7 @@ namespace nu
 					GetOwner()->GetTransform().position.y,
 					GetOwner()->GetTransform().rotation,
 					GetOwner()->GetTransform().scale,
-					m_flipH);
+					m_flipH, m_origin);
 			}
 		}
 
@@ -57,6 +57,7 @@ namespace nu
 
 		JSON_READ_NAME(value, "texture", m_textureName);
 		JSON_READ_NAME(value, "flipH", m_flipH);
+		JSON_READ_NAME(value, "origin", m_origin);
 
 
 	}

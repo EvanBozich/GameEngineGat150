@@ -2,6 +2,7 @@
 #include "Texture.h"
 #include "Model.h"
 #include "Math/Transform.h"
+#include "Math/Vector2.h"
 #include <SDL3_image/SDL_image.h>
 
 
@@ -30,12 +31,17 @@ namespace nu
 		friend class Text;
 		friend class Texture;
 
-		void DrawTexture(const class Texture& texture, float x, float y, float angle = 0.0f, float scale = 1.0f, bool flipH = false) const;
-		void DrawTexture(const class Texture& texture, const struct Rect& source, float x, float y, float angle = 0.0f, float scale = 1.0f, bool flipH = false) const;
+		void DrawTexture(const class Texture& texture, float x, float y, float angle = 0.0f, float scale = 1.0f, bool flipH = false, const Vector2& origin = Vector2{0.5f, 0.5f}) const;
+		void DrawTexture(const class Texture& texture, const struct Rect& source, float x, float y, float angle = 0.0f, float scale = 1.0f, bool flipH = false, const Vector2& origin = Vector2{ 0.5f, 0.5f }) const;
+
+		void SetCamera(const Vector2& camera) { m_camera = camera; }
+		void EnableCamera(bool enable = true) { m_cameraEnabled = enable; }
 
 	private :
 		SDL_Window* m_window = nullptr;
 		SDL_Renderer* m_renderer = nullptr;
+		bool m_cameraEnabled = true;
+		Vector2 m_camera;
 
 
 	};

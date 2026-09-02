@@ -20,7 +20,7 @@ bool SpriteGame::Initialize()
 	nu::Engine::Get().GetAudio().AddSound("scream", "scream.mp3");
 	
 	m_titleText = new Text(Resources().Get<nu::Font>("Fonts/ArcadeClassic.ttf", 64.0f));
-	m_titleText->Create(Engine::Get().GetRenderer(), "Asteriods Cpp edition", Color{ 1.0f, 1.0f, 1.0f });
+	m_titleText->Create(Engine::Get().GetRenderer(), "Platformer", Color{ 1.0f, 1.0f, 1.0f });
 
 
 	m_gameOverText = new Text(Resources().Get<nu::Font>("Fonts/ArcadeClassic.ttf", 64.0f));
@@ -57,6 +57,7 @@ void SpriteGame::Update(float dt)
 			m_health = 100;
 		}
 		m_scene->RemoveAllActors();
+		m_scene->Load("data/level.json");
 		SpawnPlayer();
 		m_gameState = GameState::Game;
 		break;
@@ -67,10 +68,6 @@ void SpriteGame::Update(float dt)
 		{
 			m_spawntimer = nu::Randomfloat(3.0f, 5.0f);
 			SpawnEnemy();
-			for (int i = 0; i < 3; i++)
-			{
-				SpawnAsteriods();
-			}
 		}
 		break;
 	case GameState::GameOver:
@@ -89,7 +86,9 @@ void SpriteGame::Update(float dt)
 
 void SpriteGame::Draw(nu::Renderer& renderer)
 {
-	res_t<Texture> background = Resources().Get<Texture>("textures/background.jpg", Engine::Get().GetRenderer());
+	res_t<Texture> background = Resources().Get<Texture>("textures/bg03.png", Engine::Get().GetRenderer());
+
+	renderer.EnableCamera(false);
 
 	//use to draw background later
 	renderer.DrawTexture(*background, 0.0f, 0.0f, 0.0f, 2.0f);
@@ -119,6 +118,8 @@ void SpriteGame::Draw(nu::Renderer& renderer)
 		break;
 	}
 
+	renderer.EnableCamera();
+
 	Game::Draw(renderer);
 }
 
@@ -143,48 +144,27 @@ void SpriteGame::OnPlayerDead()
 
 void SpriteGame::SpawnEnemy()
 {
-	//EnemyDesc enemyDesc;
-	//enemyDesc.name = "Enemy";
-	//enemyDesc.tag = "Enemy";
-	////enemyDesc.model = Assets::enemyModel;
-	//enemyDesc.texture = Resources().Get<Texture>("textures/enemy.png", Engine::Get().GetRenderer());
-	//enemyDesc.transform =  nu::Transform{ nu::Vector2{nu::Randomfloat(1280), nu::Randomfloat(1024)}, 90.0f, 1.0f};
-	//enemyDesc.speed = 450.0f;
-	//enemyDesc.damping = 1.0f;
-	//m_scene->AddActor(std::move(std::make_unique<Enemy>(enemyDesc)));
-	auto enemy = Factory::Instance().Create<Actor>("EnemyPrototype");
-	enemy->SetPosition({ nu::Randomfloat(1280), nu::Randomfloat(1024)});
-	m_scene->AddActor(std::move(enemy));
+	int rand = nu::RandomInt(0,2);
+
+	if (rand == 1)
+	{
+		auto enemy = Factory::Instance().Create<nu::Actor>("FlyingEnemyPrototype");
+		enemy->SetPosition({ nu::Randomfloat(1280), nu::Randomfloat(1024) });
+		m_scene->AddActor(std::move(enemy));
+	}
+	else
+	{
+		auto enemy = Factory::Instance().Create<nu::Actor>("EnemyPrototype");
+		enemy->SetPosition({ nu::Randomfloat(1280), nu::Randomfloat(1024) });
+		m_scene->AddActor(std::move(enemy));
+	}
+
 }
 
-void SpriteGame::SpawnAsteriods()
-{
-//	EnemyDesc asteriod;
-//	asteriod.name = "Asteriod";
-//	asteriod.tag = "Enemy";
-//	//asteriod.model = Assets::asteriodModel;
-//	asteriod.texture = Resources().Get<Texture>("textures/asteroid.png", Engine::Get().GetRenderer());
-//	asteriod.transform = nu::Transform{ nu::Vector2{nu::Randomfloat(1280), nu::Randomfloat(1024)}, 90.0f, nu::Randomfloat(1.0f, 5.0f)};
-//	asteriod.speed = 100.0f;
-//	asteriod.damping = 1.0f;
-//	m_scene->AddActor(std::move(std::make_unique<Enemy>(asteriod)));
-	auto enemy = Factory::Instance().Create<Actor>("AsteroidPrototype");
-	enemy->SetPosition({ nu::Randomfloat(1280), nu::Randomfloat(1024) });
-	m_scene->AddActor(std::move(enemy));
-}
 
 void SpriteGame::SpawnPlayer()
 {
-	//PlayerDesc playerDesc;
-	//playerDesc.name = "Player";
-	////playerDesc.model = Assets::playerModel;
-	//playerDesc.texture = Resources().Get<Texture>("textures/player.png", Engine::Get().GetRenderer());
-	//playerDesc.transform = nu::Transform{ nu::Vector2{640.0f, 512.0f}, 0.0f, 1.0f };
-	//playerDesc.speed = 800.0f;
-	//playerDesc.damping = 1.0f;
-	//std::unique_ptr<Player> player = std::make_unique<Player>(playerDesc);
-	//m_scene->AddActor(std::move(player));
-	auto player = Factory::Instance().Create<Actor>("PlayerPrototype");
+	auto player = Factory::Instance().Create<nu::Actor>("PlayerPrototype");
 	m_scene->AddActor(std::move(player));
 
 }

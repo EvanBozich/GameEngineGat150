@@ -5,6 +5,7 @@
 #include "Resources/Resource.h"
 #include "Object.h"
 #include "Core/Component.h"
+#include <string>
 
 namespace nu {
     class Scene;
@@ -54,6 +55,7 @@ namespace nu {
 
         const std::string& GetName() const { return m_name; }
         const std::string& GetTag() const { return m_tag; }
+        void SetTag(const std::string& tag) { m_tag = tag; }
 
         Scene* GetScene() { return m_scene; }
 

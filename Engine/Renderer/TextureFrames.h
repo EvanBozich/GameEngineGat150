@@ -14,6 +14,8 @@ namespace nu
 
 		unsigned int GetTotalFrames() const { return m_totalFrame; }
 
+		unsigned int GetStartFrame() const { return m_startFrame; }
+
 		res_t<class Texture> GetTexture() const { return m_texture; }
 
 	private:

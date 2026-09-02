@@ -54,23 +54,32 @@ namespace nu
 		m_sourceRect = m_spriteAnimation.textureFrames->GetFrameRect(m_frame);
 	}
 
-	void SpriteAnimatorRendererComponent::Play(const std::string& name)
+	void SpriteAnimatorRendererComponent::Play(const std::string& name, bool restart)
 	{
-		auto iter = m_spriteAnimations.find(ToLower(name));
-		if (iter == m_spriteAnimations.end())
-		{
-			std::cerr << "Could not find animaition" << name << std::endl;
-			return;
-		}
 
-		m_spriteAnimation = iter->second;
+			if (name == m_currentAnimation && !restart)
+			{
+				return;
+			}
 
-		m_frame = 0;
+			auto iter = m_spriteAnimations.find(ToLower(name));
+			if (iter == m_spriteAnimations.end())
+			{
+				std::cerr << "Could not find animaition" << name << std::endl;
+				return;
+			}
 
-		m_frameTimer = 0.0f;
+			m_spriteAnimation = iter->second;
 
-		m_texture = m_spriteAnimation.textureFrames->GetTexture();
-		m_sourceRect = m_spriteAnimation.textureFrames->GetFrameRect(m_frame);
+			m_currentAnimation = m_spriteAnimation.name;
+
+			m_frame = 0;
+
+			m_frameTimer = 0.0f;
+
+			m_texture = m_spriteAnimation.textureFrames->GetTexture();
+			m_sourceRect = m_spriteAnimation.textureFrames->GetFrameRect(m_frame);
+
 	}
 
 	void SpriteAnimatorRendererComponent::Read(const json::value_t& value)
@@ -108,5 +117,9 @@ namespace nu
 			}
 		}
 
+	}
+	bool SpriteAnimatorRendererComponent::IsAnimationDone() const
+	{
+		return (m_frame == m_spriteAnimation.textureFrames->GetTotalFrames() - 1);
 	}
 }

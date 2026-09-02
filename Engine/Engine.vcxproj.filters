@@ -245,6 +245,8 @@
     <ClCompile Include="Components\TilemapRenderComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
-    <ClCompile Include="Components\SpriteAnimatorRendererComponent.cpp" />
+    <ClCompile Include="Components\SpriteAnimatorRendererComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

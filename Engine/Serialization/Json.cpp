@@ -62,7 +62,7 @@ namespace nu::json
     bool Read(const value_t& value, const std::string& name, unsigned int& data, bool required)
     {
         // check if the value has the "<name>" and the correct data type
-        if (!value.HasMember(name.c_str()) || !value[name.c_str()].IsUint())
+        if (!value.HasMember(name.c_str()) || !value[name.c_str()].IsNumber())
         {
             if (required)
                 std::cerr << "Could not read JSON value (unsigned int): " << name << std::endl;

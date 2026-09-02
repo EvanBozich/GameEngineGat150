@@ -31,7 +31,7 @@ namespace nu
         JSON_READ_NAME(document, "columns", m_numColumns);
         JSON_READ_NAME(document, "rows", m_numRows);
         JSON_READ_NAME(document, "start_frame", m_startFrame);
-        JSON_READ_NAME(document, "total_frame", m_totalFrame);
+        JSON_READ_NAME(document, "total_frames", m_totalFrame);
 
 
         if (m_numColumns <= 0 || m_numRows <= 0)
@@ -50,7 +50,7 @@ namespace nu
     {
         if (frame >= m_totalFrame)
         {
-            std::cerr << "Texture frame: " << frame << "is out of bounds.\n";
+            std::cerr << "Texture frame: " << frame << " is out of bounds.\n";
             frame = 0;
         }
         int currentFrame = m_startFrame + frame;

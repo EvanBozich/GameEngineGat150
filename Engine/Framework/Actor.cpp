@@ -39,8 +39,12 @@ namespace nu
 
         for (auto& component : m_components)
         {
-            component->Update(dt);
+            if (component->IsActive())
+            {
+                component->Update(dt);
+            }
         }
+
 
     }
 
@@ -52,7 +56,8 @@ namespace nu
 
            if (rendererComponent)
            {
-               rendererComponent->Draw(renderer);
+               if(rendererComponent->IsActive()) rendererComponent->Draw(renderer);
+               
            }
         }
 
