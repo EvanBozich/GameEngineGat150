@@ -52,7 +52,7 @@
       ]
     },
     {
-      "name": "Create",
+      "name": "Crate",
       "type": "CratePrototype",
       "prototype": false,
       "tag": "Crate",

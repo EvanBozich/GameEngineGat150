@@ -221,6 +221,8 @@
     <None Include="..\Build\Assets\SpriteGame\Animations\hero_run.json" />
     <None Include="..\Build\Assets\SpriteGame\Data\level.json" />
     <None Include="..\Build\Assets\SpriteGame\Data\scene.json" />
+    <None Include="..\Build\Assets\SpriteGame\Tilemaps\full_level.json" />
+    <None Include="..\Build\Assets\SpriteGame\Tilemaps\level2.json" />
     <None Include="..\Build\Assets\SpriteGame\Tilemaps\world.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

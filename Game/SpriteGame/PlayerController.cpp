@@ -31,19 +31,18 @@ void PlayerController::Update(float dt)
 		if (nu::Engine::Get().GetInput().GetKeyDown(SDL_SCANCODE_D)) dir = 1.0f;
 		if (nu::Engine::Get().GetInput().GetKeyPressed(SDL_SCANCODE_SPACE))
 		{
-			m_rendererCompoent->Play("h_jump");
+			std::cout << "Called the jump animaition" << std::endl;
+			m_rendererCompoent->Play("h_jump", true);
 			velocity.y = -500.0f;
 		}
 		if (dir != 0.0f)
 		{
-			std::cout << "Called the run animation" << std::endl;
 			m_rendererCompoent->Play("h_run");
 			velocity.x = dir * 100.0f;
 			m_rendererCompoent->SetFlipH(dir < 0);
 		}
 		else
 		{
-			std::cout << "Called the idle animaition" << std::endl;
 			m_rendererCompoent->Play("h_idle");
 		}
 
@@ -53,7 +52,14 @@ void PlayerController::Update(float dt)
 			m_state = State::Attack;
 
 			auto damager = nu::Factory::Instance().Create<Damager>("DamagerPrototype");
-			damager->SetPosition(GetTransform().position + nu::Vector2{20.0f, 0.0f});
+			if (dir > 0 || dir == 0)
+			{
+				damager->SetPosition(GetTransform().position + nu::Vector2{20.0f, 0.0f});
+			}
+			else
+			{
+				damager->SetPosition(GetTransform().position - nu::Vector2{ 20.0f, 0.0f });
+			}
 			damager->SetTag("PlayerDamager");
 			m_scene->AddActor(std::move(damager));
 		}

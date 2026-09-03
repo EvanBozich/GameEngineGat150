@@ -173,5 +173,11 @@
     <None Include="..\Build\Assets\SpriteGame\Animations\eye_attack.json">
       <Filter>SpriteGame\Assets\animations</Filter>
     </None>
+    <None Include="..\Build\Assets\SpriteGame\Tilemaps\level2.json">
+      <Filter>SpriteGame\Assets\tilemaps</Filter>
+    </None>
+    <None Include="..\Build\Assets\SpriteGame\Tilemaps\full_level.json">
+      <Filter>SpriteGame\Assets\tilemaps</Filter>
+    </None>
   </ItemGroup>
 </Project>

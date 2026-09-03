@@ -44,13 +44,13 @@ void EnemyController::Update(float dt)
 		if (dir != 0)
 		{
 			velocity.x = dir * 50.0f;
-			m_rendererCompoent->Play("run");
+			m_rendererCompoent->Play("e_run");
 			m_rendererCompoent->SetFlipH(dir < 0);
 
 		}
 		else
 		{
-			m_rendererCompoent->Play("idle");
+			m_rendererCompoent->Play("e_idle");
 		}
 
 	}
@@ -61,7 +61,7 @@ void EnemyController::Update(float dt)
 		if (m_rendererCompoent->IsAnimationDone())
 		{
 			m_state = State::Move;
-			m_rendererCompoent->Play("idle");
+			m_rendererCompoent->Play("e_idle");
 		}
 		break;
 	case CharacterBase::State::Death:
