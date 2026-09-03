@@ -41,7 +41,9 @@ namespace nu
 		SDL_Window* m_window = nullptr;
 		SDL_Renderer* m_renderer = nullptr;
 		bool m_cameraEnabled = true;
-		Vector2 m_camera;
+		Vector2 m_camera{ 0.0f, 0.0f };
+		float m_width = 1280.0f;
+		float m_height = 1024.0f;
 
 
 	};

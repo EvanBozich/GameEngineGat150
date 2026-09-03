@@ -52,9 +52,7 @@ namespace nu
 
 	void TilemapRendererComponent::Draw(const Renderer& renderer)
 	{
-		if (!m_tilemap) return;
-
-		for (const auto& layer : m_tilemap->GetLayers())
+		for (auto layer : m_tilemap->GetLayers())
 		{
 
 			for (int i = 0; i < layer.data.size(); i++)

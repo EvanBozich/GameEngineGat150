@@ -58,6 +58,7 @@ void FlyingEnemyController::Update(float dt)
 	}
 		break;
 	case CharacterBase::State::Attack:
+		m_state = State::Move;
 		break;
 	case CharacterBase::State::Hit:
 		m_state = State::Move;

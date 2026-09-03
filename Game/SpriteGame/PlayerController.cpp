@@ -31,8 +31,8 @@ void PlayerController::Update(float dt)
 		if (nu::Engine::Get().GetInput().GetKeyDown(SDL_SCANCODE_D)) dir = 1.0f;
 		if (nu::Engine::Get().GetInput().GetKeyPressed(SDL_SCANCODE_SPACE))
 		{
-			std::cout << "Called the jump animaition" << std::endl;
 			m_rendererCompoent->Play("h_jump", true);
+			std::cout << "Called the jump animaition" << std::endl;
 			velocity.y = -500.0f;
 		}
 		if (dir != 0.0f)
@@ -77,6 +77,7 @@ void PlayerController::Update(float dt)
 	case CharacterBase::State::Hit:
 		break;
 	case CharacterBase::State::Death:
+		m_rendererCompoent->Play("h_death");
 		break;
 	default:
 		break;
