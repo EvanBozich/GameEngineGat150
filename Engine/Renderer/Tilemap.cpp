@@ -90,7 +90,7 @@ namespace nu
 
 	Vector2 Tilemap::GetTilePosition(const Layer& layer, int tileIndex)
 	{
-		int column = tileIndex & layer.width;
+		int column = tileIndex % layer.width;
 		int row = tileIndex / layer.width;
 		
 		return Vector2{ (float)(column * m_tileWidth), (float)(row * m_tileHeight) };
