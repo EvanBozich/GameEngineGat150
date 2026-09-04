@@ -75,7 +75,11 @@ void PlayerController::Update(float dt)
 	}
 		break;
 	case CharacterBase::State::Hit:
-		m_rendererCompoent->Play("h_hit");
+		m_rendererCompoent->Play("h_death");
+		if (m_rendererCompoent->IsAnimationDone())
+		{
+			m_state = State::Move;
+		}
 		break;
 	case CharacterBase::State::Death:
 		m_rendererCompoent->Play("h_death");
@@ -96,7 +100,6 @@ void PlayerController::OnCollision(nu::Actor* other)
 {
 	if (nu::EqualsIgnoreCase(other->GetTag(), "EnemyDamager"))
 	{
-		m_rendererCompoent->Play("h_death");
 		Damager* damager = dynamic_cast<Damager*>(other);
 		if (damager) m_health -= damager->GetDamage();
 		if (m_health <= 0)
