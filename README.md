@@ -1,3 +1,7 @@
+<img width="600" height="500" alt="Screenshot 2026-09-03 184535" src="https://github.com/user-attachments/assets/60c66752-0aba-4aee-a30e-12f4ce9b8e3d" />
+
+
+
 # Game Engine
 
 A component-based 2D game engine written in C++20, built with SDL3, FMOD, Box2D, and RapidJSON. Includes a demo game showcasing the engine's core systems.
@@ -78,6 +82,11 @@ The included demo game demonstrates the engine in practice:
 - Box2D
 - RapidJSON
 
+
+<img width="600" height="500" alt="Screenshot 2026-09-03 183154" src="https://github.com/user-attachments/assets/e7ca9c7a-eaa3-4161-b2e3-894ce5357274" />
+
+
+
 ### Build
 
 1. Clone the repository.
@@ -120,6 +129,12 @@ GameEngine.sln
     ├── SpriteGame
     └── Main.cpp
 ```
+
+## Limitations
+The engine works very well but the sample game has a few issue that need to be worked out. 
+    - Collison is wonky sometimes. The bounds for the sprites are off or aren't drawn in. 
+    - The base enemy (Red robe) doesn't execute his attack animation always. 
+These few kinks of the game can be worked out in future updates.
 
 
 ## Acknowledgments
