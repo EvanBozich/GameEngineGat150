@@ -144,7 +144,7 @@ void SpriteGame::OnPlayerDead()
 
 void SpriteGame::SpawnEnemy()
 {
-	int rand = nu::RandomInt(0,2);
+	int rand = nu::RandomInt(2);
 
 	if (rand == 1)
 	{

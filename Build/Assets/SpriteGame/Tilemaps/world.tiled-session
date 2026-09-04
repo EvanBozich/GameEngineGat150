@@ -1,5 +1,5 @@
 {
-    "activeFile": "world.json",
+    "activeFile": "full_level.json",
     "expandedProjectPaths": [
         "."
     ],
@@ -68,15 +68,22 @@
     "openFiles": [
         "ground.tsx",
         "tilemap.tmx",
-        "world.json"
+        "world.json",
+        "level2.json",
+        "level2.tmx",
+        "full_level.tmx",
+        "full_level.json"
     ],
     "project": "world.tiled-project",
     "property.type": "string",
     "recentFiles": [
-        "level2.tmx",
         "ground.tsx",
         "tilemap.tmx",
-        "world.json"
+        "world.json",
+        "level2.json",
+        "level2.tmx",
+        "full_level.tmx",
+        "full_level.json"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
