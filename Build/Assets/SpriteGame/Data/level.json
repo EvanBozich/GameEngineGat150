@@ -18,7 +18,7 @@
       "components": [
         {
           "type": "TilemapRendererComponent",
-          "tilemap_name": "tilemaps/world.json"
+          "tilemap_name": "tilemaps/full_level.json"
         }
       ]
 
@@ -31,11 +31,11 @@
       "active": true,
       "transform": {
         "position": [
-          140,
+          1024,
           0
         ],
         "rotation": 0,
-        "scale": 1
+        "scale": 0.5
       },
       "components": [
         {
@@ -46,7 +46,7 @@
           "type": "Box2DPhysicsComponent",
           "linear_damping": 2.5,
           "angular_damping": 2.5,
-          "size": [ 10, 10 ],
+          "size": [ 48, 48 ],
           "gravity_scale": 1
         }
       ]
@@ -59,11 +59,11 @@
       "active": true,
       "transform": {
         "position": [
-          700,
+          40,
           0
         ],
         "rotation": 0,
-        "scale": 1
+        "scale": 0.5
       }
     }
   ]

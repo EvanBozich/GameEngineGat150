@@ -198,7 +198,7 @@
         {
           "type": "SpriteRendererComponent",
           "texture": "textures/damager.png",
-          "is_active": true
+          "active": false
         },
         {
           "type": "Box2DPhysicsComponent",

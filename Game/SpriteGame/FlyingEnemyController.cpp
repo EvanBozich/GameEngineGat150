@@ -41,29 +41,34 @@ void FlyingEnemyController::Update(float dt)
 			if (direction.Length() < 20.0f)
 			{
 				m_state = State::Attack;
-				m_rendererCompoent->Play("Attack");
 
-
-				auto damager = nu::Factory::Instance().Create<Damager>("DamagerPrototype");
-				damager->SetPosition(GetTransform().position);
-				damager->SetScale(1);
-				damager->SetTag("EnemyDamager");
-				m_scene->AddActor(std::move(damager));
 			}
 
-			m_physicsComponent->ApplyForce(direction.Normalized() * 50.0f);
+			m_physicsComponent->ApplyForce(direction.Normalized() * 90.0f);
 			m_rendererCompoent->Play("idle");
 
 		}
 	}
 		break;
 	case CharacterBase::State::Attack:
+	{
+		m_rendererCompoent->Play("Attack");
+		auto damager = nu::Factory::Instance().Create<Damager>("DamagerPrototype");
+		damager->SetPosition(GetTransform().position);
+		damager->SetScale(1);
+		damager->SetTag("EnemyDamager");
+		m_scene->AddActor(std::move(damager));
 		m_state = State::Move;
+	}
 		break;
 	case CharacterBase::State::Hit:
-		m_state = State::Move;
+		if (m_rendererCompoent->IsAnimationDone())
+		{
+			m_state = State::Move;
+		}
 		break;
 	case CharacterBase::State::Death:
+		m_rendererCompoent->Play("hit");
 		break;
 	default:
 		break;
@@ -78,7 +83,6 @@ void FlyingEnemyController::OnCollision(nu::Actor* other)
 {
 	if (nu::EqualsIgnoreCase(other->GetTag(), "PlayerDamager"))
 	{
-		m_state = State::Hit;
 		m_rendererCompoent->Play("hit");
 		Damager* damager = dynamic_cast<Damager*>(other);
 
@@ -86,10 +90,12 @@ void FlyingEnemyController::OnCollision(nu::Actor* other)
 
 		if (m_health <= 0)
 		{
+			m_state = State::Death;
 			SetDestroyed();
 		}
 
 		other->SetDestroyed();
+		m_state = State::Hit;
 	}
 }
 

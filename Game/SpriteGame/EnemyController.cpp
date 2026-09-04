@@ -35,36 +35,53 @@ void EnemyController::Update(float dt)
 			nu::Vector2 position = GetTransform().position;
 			nu::Vector2 playerPosition = player->GetTransform().position;
 
+			nu::Vector2 direction = playerPosition - position;
+
+			m_rendererCompoent->SetFlipH(direction.x < 0);
+
 			if (playerPosition.x < position.x) dir = -1.0f;
 			else dir = 1.0f;
-		}
 
+			if (direction.Length() < 20.0f)
+			{
+				m_state = State::Attack;
 
+			}
 
-		if (dir != 0)
-		{
-			velocity.x = dir * 50.0f;
-			m_rendererCompoent->Play("e_run");
-			m_rendererCompoent->SetFlipH(dir < 0);
+			if (dir != 0)
+			{
+				velocity.x = dir * 50.0f;
+				m_rendererCompoent->Play("e_run");
+				m_rendererCompoent->SetFlipH(dir < 0);
 
-		}
-		else
-		{
-			m_rendererCompoent->Play("e_idle");
+			}
+			else
+			{
+				m_rendererCompoent->Play("e_idle");
+			}
 		}
 
 	}
 		break;
 	case CharacterBase::State::Attack:
+	{
+		m_rendererCompoent->Play("Attack");
+		auto damager = nu::Factory::Instance().Create<Damager>("DamagerPrototype");
+		damager->SetPosition(GetTransform().position);
+		damager->SetScale(1);
+		damager->SetTag("EnemyDamager");
+		m_scene->AddActor(std::move(damager));
+		m_state = State::Move;
+	}
 		break;
 	case CharacterBase::State::Hit:
 		if (m_rendererCompoent->IsAnimationDone())
 		{
 			m_state = State::Move;
-			m_rendererCompoent->Play("e_idle");
 		}
 		break;
 	case CharacterBase::State::Death:
+		m_rendererCompoent->Play("e_hit");
 		break;
 	default:
 		break;
@@ -80,14 +97,16 @@ void EnemyController::OnCollision(nu::Actor* other)
 {
 	if (nu::EqualsIgnoreCase(other->GetTag(), "PlayerDamager"))
 	{
-		m_state = State::Hit;
 		m_rendererCompoent->Play("e_hit");
 		Damager* damager = dynamic_cast<Damager*>(other);
 		if (damager) m_health -= damager->GetDamage();
 		if (m_health <= 0)
 		{
 			SetDestroyed();
+			m_state = State::Death;
 		}
+		other->SetDestroyed();
+		m_state = State::Hit;
 	}
 }
 

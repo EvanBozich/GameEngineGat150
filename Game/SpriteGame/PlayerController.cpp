@@ -75,6 +75,7 @@ void PlayerController::Update(float dt)
 	}
 		break;
 	case CharacterBase::State::Hit:
+		m_rendererCompoent->Play("h_hit");
 		break;
 	case CharacterBase::State::Death:
 		m_rendererCompoent->Play("h_death");
@@ -93,7 +94,18 @@ void PlayerController::Update(float dt)
 
 void PlayerController::OnCollision(nu::Actor* other)
 {
-
+	if (nu::EqualsIgnoreCase(other->GetTag(), "EnemyDamager"))
+	{
+		m_rendererCompoent->Play("h_death");
+		Damager* damager = dynamic_cast<Damager*>(other);
+		if (damager) m_health -= damager->GetDamage();
+		if (m_health <= 0)
+		{
+			m_state = State::Death;
+		}
+		other->SetDestroyed();
+		m_state = State::Hit;
+	}
 }
 
 void PlayerController::Read(const nu::json::value_t& value)
